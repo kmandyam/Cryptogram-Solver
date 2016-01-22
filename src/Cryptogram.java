@@ -24,7 +24,7 @@ public class Cryptogram{
         }
     }
 
-    public int frequencies(char letter){
+    public int frequency(char letter){
         return frequencyCount.get(letter);
     }
 
