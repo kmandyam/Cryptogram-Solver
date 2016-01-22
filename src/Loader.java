@@ -1,15 +1,15 @@
 import java.io.*;
 import java.util.*;
 
-public class Loader extends ReaderClass {
+public class Loader extends ReaderClass{
     public static void main(String[] args) throws FileNotFoundException{
 
         String dictionaryPath;
         String cryptogramPath;
-        if(args.length != 0){
+        if(args.length == 2){
             dictionaryPath = args[0];
             cryptogramPath = args[1];
-        }else {
+        }else{
             Scanner input = new Scanner(System.in);
             System.out.println("Enter the path to the dictionary");
             dictionaryPath = input.nextLine();
@@ -17,16 +17,23 @@ public class Loader extends ReaderClass {
             cryptogramPath = input.nextLine();
         }
 
-        /*if(Files.exists(dictionaryPath) && Files.exists(cryptogramPath)){
+        if(verifyFiles(dictionaryPath, cryptogramPath)) {
+            String dictionary = readFile(dictionaryPath);
+            String cryptogram = readFile(cryptogramPath);
+            System.out.println(dictionary);
+            System.out.println(cryptogram);
+        }
 
-        }*/
-        //how to verify that the path is legit???
+    }
 
-        String dictionary = readFile(dictionaryPath);
-        String cryptogram = readFile(cryptogramPath);
-        System.out.println(dictionary);
-        System.out.println(cryptogram);
+    private static boolean verifyFiles(String path1, String path2){
+        File file1 = new File(path1);
+        File file2 = new File(path2);
 
+        if(file1.exists() && file2.exists()){
+            return true;
+        }
+        return false;
     }
 
 }
