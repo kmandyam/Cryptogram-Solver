@@ -20,7 +20,7 @@ public class Loader{
         if(pathExists(dictionaryPath) && pathExists(cryptogramPath)){
             String dictionary = FileReader.readFile(dictionaryPath);
             String cryptogram = FileReader.readFile(cryptogramPath);
-            //assemble dictionary here
+            //assemble dictionary here, just printing out for right now
             System.out.println(dictionary);
             System.out.println(cryptogram);
         }

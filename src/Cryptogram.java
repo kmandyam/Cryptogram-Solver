@@ -12,13 +12,11 @@ public class Cryptogram{
 
         frequencyCount = new HashMap<Character, Integer>();
         for(String word: words){
-            for(int j = 0; j < word.length(); j++){
-                char curr = word.charAt(j);
+            for(char curr: word.toCharArray()){
                 if(!frequencyCount.containsKey(curr)){
                     frequencyCount.put(curr, 1);
                 }else{
                     int currFreq = frequencyCount.get(curr);
-                    frequencyCount.remove(curr);
                     frequencyCount.put(curr, currFreq + 1);
                 }
             }
