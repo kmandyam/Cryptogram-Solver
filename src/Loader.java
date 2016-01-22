@@ -17,13 +17,16 @@ public class Loader{
             cryptogramPath = input.nextLine();
         }
 
-        if(pathExists(dictionaryPath) && pathExists(cryptogramPath)){
-            String dictionary = FileReader.readFile(dictionaryPath);
-            String cryptogram = FileReader.readFile(cryptogramPath);
-            //assemble dictionary here, just printing out for right now
-            System.out.println(dictionary);
-            System.out.println(cryptogram);
+        if(!pathExists(dictionaryPath) || !pathExists(cryptogramPath)){
+            System.exit(1);
         }
+        List<String> dictionaryTokens = FileReader.tokenizeOnSpace(FileReader.readFile(dictionaryPath));
+        List<String> cryptogramTokens = FileReader.tokenizeOnSpace(FileReader.readFile(cryptogramPath));
+
+        Cryptogram cryptogram = new Cryptogram(cryptogramTokens);
+        Dictionary dictionary = new Dictionary(dictionaryTokens);
+
+
 
     }
 
