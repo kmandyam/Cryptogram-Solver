@@ -9,11 +9,11 @@ public class Cryptogram{
     public Cryptogram(List<String> words) throws FileNotFoundException{
 
         this.cryptogram = words;
-        
+
         frequencyCount = new HashMap<Character, Integer>();
-        for(int i = 0; i < words.size(); i++){
-            for(int j = 0; j < words.get(i).length(); j++){
-                char curr = words.get(i).charAt(j);
+        for(String word: words){
+            for(int j = 0; j < word.length(); j++){
+                char curr = word.charAt(j);
                 if(!frequencyCount.containsKey(curr)){
                     frequencyCount.put(curr, 1);
                 }else{
