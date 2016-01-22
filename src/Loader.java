@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Loader extends ReaderClass{
+public class Loader extends FileReader{
     public static void main(String[] args) throws FileNotFoundException{
 
         String dictionaryPath;

@@ -1,13 +1,12 @@
 import java.io.*;
 import java.util.*;
 
-public class Cryptogram extends ReaderClass{
+public class Cryptogram extends FileReader{
     
     public List<String> cryptogram;
     public HashMap<Character, Integer> frequencyCount;
 
     public Cryptogram(String cryptogramFile) throws FileNotFoundException{
-        //read in the cryptogram file
         String cryptogramString = readFile(cryptogramFile);
         Scanner scn = new Scanner(cryptogramString);
         cryptogram = new ArrayList<String>();
