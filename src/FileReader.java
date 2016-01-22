@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class FileReader {
+public class FileReader{
 
     public static String readFile(String file) throws FileNotFoundException {
         Scanner scn = new Scanner(new File(file));

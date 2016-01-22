@@ -1,9 +1,10 @@
 import java.io.*;
 import java.util.*;
 
-public class Loader extends FileReader{
+public class Loader{
     public static void main(String[] args) throws FileNotFoundException{
 
+        System.out.println("start of main");
         String dictionaryPath;
         String cryptogramPath;
         if(args.length == 2){
@@ -18,8 +19,8 @@ public class Loader extends FileReader{
         }
 
         if(verifyFiles(dictionaryPath, cryptogramPath)) {
-            String dictionary = readFile(dictionaryPath);
-            String cryptogram = readFile(cryptogramPath);
+            String dictionary = FileReader.readFile(dictionaryPath);
+            String cryptogram = FileReader.readFile(cryptogramPath);
             System.out.println(dictionary);
             System.out.println(cryptogram);
         }
