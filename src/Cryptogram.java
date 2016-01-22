@@ -6,24 +6,23 @@ public class Cryptogram{
     public List<String> cryptogram;
     public HashMap<Character, Integer> frequencyCount;
 
-    public Cryptogram(String cryptogramFile) throws FileNotFoundException{
-        String cryptogramString = FileReader.readFile(cryptogramFile);
-        Scanner scn = new Scanner(cryptogramString);
-        cryptogram = new ArrayList<String>();
-        while(scn.hasNext()){
-            cryptogram.add(scn.next());
-        }
+    public Cryptogram(List<String> words) throws FileNotFoundException{
 
+        this.cryptogram = words;
+        
         frequencyCount = new HashMap<Character, Integer>();
-        for(int i = 0; i < cryptogramString.length(); i++){
-            char curr = cryptogramString.charAt(i);
-            if(!frequencyCount.containsKey(curr)){
-                frequencyCount.put(curr, 1);
-            }else{
-                int currFreq = frequencyCount.get(curr);
-                frequencyCount.remove(curr);
-                frequencyCount.put(curr, currFreq + 1);
+        for(int i = 0; i < words.size(); i++){
+            for(int j = 0; j < words.get(i).length(); j++){
+                char curr = words.get(i).charAt(j);
+                if(!frequencyCount.containsKey(curr)){
+                    frequencyCount.put(curr, 1);
+                }else{
+                    int currFreq = frequencyCount.get(curr);
+                    frequencyCount.remove(curr);
+                    frequencyCount.put(curr, currFreq + 1);
+                }
             }
+
         }
     }
 

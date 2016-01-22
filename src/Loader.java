@@ -4,7 +4,6 @@ import java.util.*;
 public class Loader{
     public static void main(String[] args) throws FileNotFoundException{
 
-        System.out.println("start of main");
         String dictionaryPath;
         String cryptogramPath;
         if(args.length == 2){
@@ -18,9 +17,10 @@ public class Loader{
             cryptogramPath = input.nextLine();
         }
 
-        if(verifyFiles(dictionaryPath, cryptogramPath)) {
+        if(verifyFiles(dictionaryPath, cryptogramPath)){
             String dictionary = FileReader.readFile(dictionaryPath);
             String cryptogram = FileReader.readFile(cryptogramPath);
+            //assemble dictionary here
             System.out.println(dictionary);
             System.out.println(cryptogram);
         }
