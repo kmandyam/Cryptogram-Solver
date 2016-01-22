@@ -17,7 +17,7 @@ public class Loader{
             cryptogramPath = input.nextLine();
         }
 
-        if(verifyFiles(dictionaryPath, cryptogramPath)){
+        if(pathExists(dictionaryPath) && pathExists(cryptogramPath)){
             String dictionary = FileReader.readFile(dictionaryPath);
             String cryptogram = FileReader.readFile(cryptogramPath);
             //assemble dictionary here
@@ -27,14 +27,9 @@ public class Loader{
 
     }
 
-    private static boolean verifyFiles(String path1, String path2){
+    private static boolean pathExists(String path1){
         File file1 = new File(path1);
-        File file2 = new File(path2);
-
-        if(file1.exists() && file2.exists()){
-            return true;
-        }
-        return false;
+        return file1.exists();
     }
 
 }
