@@ -3,10 +3,19 @@ import java.util.*;
 public class Dictionary {
 
     private Set<String> dictionary;
+    private Map<Integer,Set<String>> lengthToWords;
+
     public Dictionary(List<String> dictionaryTokens){
         dictionary = new HashSet<String>();
         for(String word: dictionaryTokens){
             dictionary.add(word);
+            if(!lengthToWords.keySet().contains(word.length())){
+                Set<String> words = new HashSet<String>();
+                words.add(word);
+                lengthToWords.put(word.length(), words);
+            }else{
+                lengthToWords.get(word.length()).add(word);
+            }
         }
 
     }
@@ -33,6 +42,8 @@ public class Dictionary {
         return patternMap.keySet();
     }
 
+
+    //combine methods
     private List<String> pruneDictByLength(int wordLength){
         List<String> prunedDict = new ArrayList<String>();
         for(String s : this.dictionary){
