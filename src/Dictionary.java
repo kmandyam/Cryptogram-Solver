@@ -26,7 +26,6 @@ public class Dictionary {
     }
 
     public List<String> pruneDictByPattern(String pattern){
-
         if(patternToWords.containsKey(pattern)){
             return patternToWords.get(pattern);
         }else {
@@ -34,7 +33,7 @@ public class Dictionary {
             List<String> result = new ArrayList<String>();
             for (String w : prunedDict) {
                 String wp = convertWordToPattern(pattern, w);
-                if (wp.equals(pattern)) {
+                if (wp.equalsIgnoreCase(pattern)) {
                     result.add(w);
                 }
             }
