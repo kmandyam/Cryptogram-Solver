@@ -22,7 +22,8 @@ public class Dictionary {
 
     public Set<String> pruneDictByPattern(String pattern){
         Map<String, String> patternMap= new HashMap<String, String>();
-        List<String> prunedDict = pruneDictByLength(pattern.trim().length());
+        List<String> prunedDict = new ArrayList<String>();
+        prunedDict.addAll(lengthToWords.get(pattern.length()));
         List<String> prunePattern = convertWordToPattern(pattern, prunedDict);
 
         for(int i = 0; i < prunedDict.size(); i++){
@@ -40,18 +41,6 @@ public class Dictionary {
         }
 
         return patternMap.keySet();
-    }
-
-
-    //combine methods
-    private List<String> pruneDictByLength(int wordLength){
-        List<String> prunedDict = new ArrayList<String>();
-        for(String s : this.dictionary){
-            if(s.length() == wordLength){
-                prunedDict.add(s);
-            }
-        }
-        return prunedDict;
     }
 
     private List<String> convertWordToPattern(String pattern , List<String> prunedDict){
