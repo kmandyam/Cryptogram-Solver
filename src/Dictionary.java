@@ -11,25 +11,19 @@ public class Dictionary {
 
     }
 
-    //write method to do the pattern matching for words in this dictionary
-    //then change each word to match the pattern
-    //then match the pattern with each word and add the words to a hashset and return
-    //the new dictionary
-
     public Set<String> pruneDictByPattern(String pattern){
-        Set<String> prunedDict = new HashSet<String>();
-        //prune the dictionary by length
-        prunedDict = pruneDictByLength(pattern.trim().length());
+        //prune dictionary by length in a list
+        List<String> prunedDict = pruneDictByLength(pattern.trim().length());
 
-        //prune dictionary by length
         //have a map that maps words to their patterns
 
-        Set<String> prunePattern = new HashSet<String>();
+        Map<String, String> patternMap= new HashMap<String, String>();
+        //have a list of all the patterns corresponding to those
+        List<String> prunePattern = new ArrayList<String>();
 
         //for every string in the prunedDictionary (by length),
         for(String word : prunedDict){
             String modifiedWord = "";
-
             for(int i = 0; i < pattern.length(); i++){
                 char wordChar = word.charAt(i);
                 char patternChar = pattern.charAt(i);
@@ -38,28 +32,35 @@ public class Dictionary {
                 }
                 modifiedWord += wordChar;
             }
-
             prunePattern.add(modifiedWord);
         }
 
-        prunedDict.clear();
-        prunedDict.addAll(prunePattern);
+        //add the patterns and the words to a map
+        for(int i = 0; i < prunedDict.size(); i++){
+            patternMap.put(prunedDict.get(i), prunePattern.get(i));
+        }
 
+        //remove words that don't match the pattern
         List<String> removedWords = new ArrayList<String>();
 
-        for(String patterns: prunedDict){
-            if(!patterns.equals(pattern)){
-                removedWords.add(patterns);
+        //if the pattern isn't the desired one, add word to a list
+        for(String s: patternMap.keySet()){
+            if(!patternMap.get(s).equals(pattern)){
+                removedWords.add(s);
             }
         }
 
-        prunedDict.removeAll(removedWords);
+        //remove all words from map which are featured in list
+        for(String s: removedWords){
+            patternMap.remove(s);
+        }
 
-        return prunedDict;
+        //return the keyset of the map
+        return patternMap.keySet();
     }
 
-    private Set<String> pruneDictByLength(int wordLength){
-        Set<String> prunedDict = new HashSet<String>();
+    private List<String> pruneDictByLength(int wordLength){
+        List<String> prunedDict = new ArrayList<String>();
         for(String s : this.dictionary){
             if(s.length() == wordLength){
                 prunedDict.add(s);
