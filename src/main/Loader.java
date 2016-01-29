@@ -2,6 +2,7 @@ package main;
 
 import java.io.*;
 import java.util.*;
+import main.Dictionary;
 
 public class Loader{
     public static void main(String[] args) throws FileNotFoundException{
@@ -26,7 +27,7 @@ public class Loader{
         List<String> cryptogramTokens = main.FileReader.tokenizeOnSpace(main.FileReader.readFile(cryptogramPath));
 
         Cryptogram cryptogram = new Cryptogram(cryptogramTokens);
-        main.Dictionary dictionary = new main.Dictionary(dictionaryTokens);
+        Dictionary dictionary = new Dictionary(dictionaryTokens);
 
         System.out.println(dictionary.pruneDictByPattern("-e"));
 
