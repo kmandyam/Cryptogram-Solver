@@ -26,6 +26,9 @@ public class Loader{
         Cryptogram cryptogram = new Cryptogram(cryptogramTokens);
         Dictionary dictionary = new Dictionary(dictionaryTokens);
 
+        System.out.println(dictionary.pruneDictByPattern("-e"));
+
+
 
 
     }
