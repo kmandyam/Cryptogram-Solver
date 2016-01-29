@@ -1,3 +1,5 @@
+package main;
+
 import java.io.*;
 import java.util.*;
 public class Dictionary {
@@ -8,27 +10,27 @@ public class Dictionary {
 
     //hashmap of past entries
 
-    public Dictionary(List<String> dictionaryTokens){
+    public Dictionary(List<String> dictionaryTokens) {
         dictionary = new HashSet<String>();
         lengthToWords = new HashMap<Integer, Set<String>>();
         patternToWords = new HashMap<String, List<String>>();
         for(String word: dictionaryTokens){
             dictionary.add(word);
-            if(!(lengthToWords.keySet().contains(word.length()))){
+            if(!(lengthToWords.keySet().contains(word.length()))) {
                 Set<String> words = new HashSet<String>();
                 words.add(word);
                 lengthToWords.put(word.length(), words);
-            }else{
+            } else {
                 lengthToWords.get(word.length()).add(word);
             }
         }
 
     }
 
-    public List<String> pruneDictByPattern(String pattern){
-        if(patternToWords.containsKey(pattern)){
+    public List<String> pruneDictByPattern(String pattern) {
+        if(patternToWords.containsKey(pattern)) {
             return patternToWords.get(pattern);
-        }else {
+        } else {
             Set<String> prunedDict = lengthToWords.get(pattern.length());
             List<String> result = new ArrayList<String>();
             for (String w : prunedDict) {
@@ -42,7 +44,7 @@ public class Dictionary {
         }
     }
 
-    private String convertWordToPattern(String pattern, String word){
+    private String convertWordToPattern(String pattern, String word) {
         StringBuilder modifiedWord = new StringBuilder();
         for (int i = 0; i < pattern.length(); i++) {
             char wordChar = word.charAt(i);
