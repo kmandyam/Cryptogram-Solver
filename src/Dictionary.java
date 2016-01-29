@@ -5,11 +5,14 @@ public class Dictionary {
     private Set<String> dictionary;
     private Map<Integer,Set<String>> lengthToWords;
 
+    //hashmap of past entries
+
     public Dictionary(List<String> dictionaryTokens){
         dictionary = new HashSet<String>();
+        lengthToWords = new HashMap<Integer, Set<String>>();
         for(String word: dictionaryTokens){
             dictionary.add(word);
-            if(!lengthToWords.keySet().contains(word.length())){
+            if(!(lengthToWords.keySet().contains(word.length()))){
                 Set<String> words = new HashSet<String>();
                 words.add(word);
                 lengthToWords.put(word.length(), words);
@@ -43,7 +46,7 @@ public class Dictionary {
         return patternMap.keySet();
     }
 
-    private List<String> convertWordToPattern(String pattern , List<String> prunedDict){
+    private List<String> convertWordToPattern(String pattern, List<String> prunedDict){
         List<String> prunePattern = new ArrayList<String>();
         for(String word : prunedDict){
             String modifiedWord = "";
