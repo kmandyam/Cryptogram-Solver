@@ -1,5 +1,8 @@
+package main;
+
 import java.io.*;
 import java.util.*;
+import main.Dictionary;
 
 public class Loader{
     public static void main(String[] args) throws FileNotFoundException{
@@ -20,8 +23,8 @@ public class Loader{
         if(!pathExists(dictionaryPath) || !pathExists(cryptogramPath)){
             System.exit(1);
         }
-        List<String> dictionaryTokens = FileReader.tokenizeOnSpace(FileReader.readFile(dictionaryPath));
-        List<String> cryptogramTokens = FileReader.tokenizeOnSpace(FileReader.readFile(cryptogramPath));
+        List<String> dictionaryTokens = main.FileReader.tokenizeOnSpace(main.FileReader.readFile(dictionaryPath));
+        List<String> cryptogramTokens = main.FileReader.tokenizeOnSpace(main.FileReader.readFile(cryptogramPath));
 
         Cryptogram cryptogram = new Cryptogram(cryptogramTokens);
         Dictionary dictionary = new Dictionary(dictionaryTokens);
