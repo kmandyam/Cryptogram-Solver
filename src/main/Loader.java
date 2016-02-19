@@ -2,7 +2,6 @@ package main;
 
 import java.io.*;
 import java.util.*;
-import main.Dictionary;
 
 public class Loader{
     public static void main(String[] args) throws FileNotFoundException{
@@ -29,7 +28,7 @@ public class Loader{
         Cryptogram cryptogram = new Cryptogram(cryptogramTokens);
         Dictionary dictionary = new Dictionary(dictionaryTokens);
 
-        System.out.println(dictionary.pruneDictByPattern("-e"));
+        System.out.println(dictionary.getWordsByPattern("-e"));
 
 
 

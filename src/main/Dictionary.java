@@ -27,16 +27,19 @@ public class Dictionary {
 
     }
 
-    public List<String> pruneDictByPattern(String pattern) {
+    public List<String> getWordsByPattern(String pattern) {
         if(patternToWords.containsKey(pattern)) {
             return patternToWords.get(pattern);
         } else {
             Set<String> prunedDict = lengthToWords.get(pattern.length());
             List<String> result = new ArrayList<String>();
-            for (String w : prunedDict) {
-                String wp = convertWordToPattern(pattern, w);
-                if (wp.equalsIgnoreCase(pattern)) {
-                    result.add(w);
+
+            if(prunedDict != null) {
+                for (String w : prunedDict) {
+                    String wp = convertWordToPattern(pattern, w);
+                    if (wp.equalsIgnoreCase(pattern)) {
+                        result.add(w);
+                    }
                 }
             }
             patternToWords.put(pattern, result);
