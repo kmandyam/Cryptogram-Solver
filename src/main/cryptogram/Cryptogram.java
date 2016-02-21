@@ -1,4 +1,4 @@
-package main;
+package main.cryptogram;
 
 import java.io.*;
 import java.util.*;

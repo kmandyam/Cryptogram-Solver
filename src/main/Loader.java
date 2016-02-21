@@ -1,5 +1,7 @@
 package main;
 
+import main.cryptogram.Cryptogram;
+
 import java.io.*;
 import java.util.*;
 
